@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/tdb}?currentSchema=basic
+    username: ${DATASOURCE_USER:basic_ms}
+    password: ${DATASOURCE_PASSWORD:basic_ms}

@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DATASOURCE_URL:jdbc:postgresql://postgresql:5432/tdb}?currentSchema=basic
+    username: ${DATASOURCE_USER:basic_ms}
+    password: ${DATASOURCE_PASSWORD:basic_ms}
+  main:
+    allow-bean-definition-overriding: true
+  liquibase:
+    enabled: false
+    change-log: classpath:db/changelog/database_changelog.xml
+    user: ${LIQUIBASE_USER:basic}
+    password: ${LIQUIBASE_PASSWORD:basic}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/tdb}?currentSchema=basic
+
+logging:
+  level:
+    ROOT: INFO
+    org.example: DEBUG
+    org.springframework: INFO
+
+management:
+  security:
+    enabled: true
