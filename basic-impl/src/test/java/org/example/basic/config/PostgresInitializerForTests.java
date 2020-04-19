@@ -34,7 +34,7 @@ public class PostgresInitializerForTests implements ApplicationContextInitialize
 
         POSTGRES.start();
         Runtime.getRuntime().addShutdownHook(new Thread(POSTGRES::stop));
-        JDBC_URL = String.format("jdbc:postgresql://%s:%d/ib?currentSchema=sandbox", POSTGRES.getContainerIpAddress(), POSTGRES.getFirstMappedPort());
+        JDBC_URL = String.format("jdbc:postgresql://%s:%d/tdb?currentSchema=basic", POSTGRES.getContainerIpAddress(), POSTGRES.getFirstMappedPort());
         log.info("Postgres container started. (" + JDBC_URL + ")");
     }
 
@@ -46,8 +46,8 @@ public class PostgresInitializerForTests implements ApplicationContextInitialize
     private static String[] springApplicationProperties() {
         return new String[]{
                 "spring.datasource.url=" + JDBC_URL,
-                "spring.datasource.username=basic_ms",
-                "spring.datasource.password=basic_ms",
+                "spring.datasource.username=basic",
+                "spring.datasource.password=basic",
                 "liquibase.enabled=true",
                 "liquibase.url=" + JDBC_URL,
                 "liquibase.user=basic",
