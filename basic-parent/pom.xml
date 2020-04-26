@@ -44,11 +44,10 @@
         <liquibase.version>3.8.5</liquibase.version>
         <mockito-core.version>2.10.0</mockito-core.version>
         <cucumber.version>5.4.1</cucumber.version>
-        <swagger.version>1.6.0</swagger.version>
-        <springfox-swagger.version>2.9.2</springfox-swagger.version>
-        <checkstyle.version>8.15</checkstyle.version>
         <testcontainers.version>1.13.0</testcontainers.version>
         <guava.version>23.0</guava.version>
+        <swagger.version>1.6.0</swagger.version>
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
 
         <!-- liquibase -->
         <liquibase-hibernate.version>3.6</liquibase-hibernate.version>

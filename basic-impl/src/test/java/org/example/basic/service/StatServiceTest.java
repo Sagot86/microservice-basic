@@ -13,7 +13,7 @@ import org.example.basic.dto.UserDtoFull;
 import org.example.basic.mapper.ActivityMapper;
 import org.example.basic.mapper.UserMapper;
 import org.example.basic.model.User;
-import org.example.basic.repository.UserActivityRepository;
+import org.example.basic.repository.ActivityRepository;
 import org.example.basic.repository.UserRepository;
 
 import org.junit.Test;
@@ -41,7 +41,7 @@ public class StatServiceTest {
     @Mock
     private UserRepository userRepository;
     @Mock
-    private UserActivityRepository activityRepository;
+    private ActivityRepository activityRepository;
     @Mock
     private UserMapper userMapper;
     @Mock
@@ -101,7 +101,7 @@ public class StatServiceTest {
         List<UserActivityDto> result = statService.getUserActivitiesInPeriod(USER_ID, start, end);
 
         assertNotNull(result);
-        verify(activityRepository).findAllByUserIdAndActivityDateBetween(USER_ID, start, end);
+        verify(activityRepository).findAllByUidAndActivityDateBetween(USER_ID, start, end);
         verify(activityMapper).mapToActivityDto(Collections.emptyList());
         verifyNoMoreInteractions(activityRepository);
         verifyNoMoreInteractions(activityMapper);

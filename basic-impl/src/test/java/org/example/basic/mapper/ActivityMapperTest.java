@@ -34,13 +34,13 @@ public class ActivityMapperTest {
         UserActivity activity = new UserActivity()
                 .setActivity(ACTIVITY)
                 .setActivityDate(ACTIVITY_DATE)
-                .setUserId(USER_ID);
+                .setUid(USER_ID);
 
         UserActivityDto result = mapper.mapToActivityDto(activity);
 
         assertEquals(activity.getActivity(), result.getActivity());
         assertEquals(activity.getActivityDate(), result.getActivityDate());
-        assertEquals(activity.getUserId(), result.getUid());
+        assertEquals(activity.getUid(), result.getUid());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ActivityMapperTest {
         UserActivity activity = new UserActivity()
                 .setActivity(ACTIVITY)
                 .setActivityDate(ACTIVITY_DATE)
-                .setUserId(USER_ID);
+                .setUid(USER_ID);
         List<UserActivity> activities = new ArrayList<>(Arrays.asList(activity, activity, activity));
 
         List<UserActivityDto> result = mapper.mapToActivityDto(activities);
@@ -56,7 +56,7 @@ public class ActivityMapperTest {
         for (UserActivityDto dto : result) {
             assertEquals(activity.getActivity(), dto.getActivity());
             assertEquals(activity.getActivityDate(), dto.getActivityDate());
-            assertEquals(activity.getUserId(), dto.getUid());
+            assertEquals(activity.getUid(), dto.getUid());
         }
     }
 }

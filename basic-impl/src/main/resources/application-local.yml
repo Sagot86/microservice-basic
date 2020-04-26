@@ -4,3 +4,8 @@ spring:
     url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/tdb}?currentSchema=basic
     username: ${DATASOURCE_USER:basic_ms}
     password: ${DATASOURCE_PASSWORD:basic_ms}
+logging:
+  level:
+    org.hibernate.type: DEBUG
+    org.example.basic: DEBUG
+    ROOT: DEBUG

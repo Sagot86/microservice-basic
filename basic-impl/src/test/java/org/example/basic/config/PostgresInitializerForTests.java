@@ -1,8 +1,3 @@
-/*
- * VTB Group. Do not reproduce without permission in writing.
- * Copyright (c) 2020 VTB Group. All rights reserved.
- */
-
 package org.example.basic.config;
 
 import lombok.extern.slf4j.Slf4j;

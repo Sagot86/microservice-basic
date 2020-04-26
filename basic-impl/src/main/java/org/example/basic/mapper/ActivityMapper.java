@@ -18,7 +18,7 @@ public class ActivityMapper {
 
     public UserActivityDto mapToActivityDto(UserActivity activity) {
         return new UserActivityDto()
-                .setUid(activity.getUserId())
+                .setUid(activity.getUid())
                 .setActivity(activity.getActivity())
                 .setActivityDate(activity.getActivityDate());
     }

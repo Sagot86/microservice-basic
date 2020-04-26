@@ -44,7 +44,7 @@ public class UserMapperTest {
     @Test
     public void testMapToEntity() {
         UserDto userDto = new UserDto()
-                .setUid(USER_ID)
+                .setId(USER_ID)
                 .setMoney(MONEY)
                 .setCountry(COUNTRY);
 
@@ -52,7 +52,7 @@ public class UserMapperTest {
 
         assertEquals(userDto.getCountry(), result.getCountry());
         assertEquals(userDto.getMoney(), result.getMoney());
-        assertEquals(userDto.getUid(), result.getUid());
+        assertEquals(userDto.getId(), result.getUid());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class UserMapperTest {
 
         assertEquals(user.getCountry(), result.getCountry());
         assertEquals(user.getMoney(), result.getMoney());
-        assertEquals(user.getUid(), result.getUid());
+        assertEquals(user.getUid(), result.getId());
         assertEquals(user.getCreationDate(), result.getCreationDate());
         assertEquals(activityDtos, result.getActivities());
         verify(activityMapper).mapToActivityDto(activities);
@@ -98,7 +98,7 @@ public class UserMapperTest {
         for (UserDtoFull dto : result) {
             assertEquals(user.getCountry(), dto.getCountry());
             assertEquals(user.getMoney(), dto.getMoney());
-            assertEquals(user.getUid(), dto.getUid());
+            assertEquals(user.getUid(), dto.getId());
             assertEquals(user.getCreationDate(), dto.getCreationDate());
             assertEquals(activityDtos, dto.getActivities());
         }

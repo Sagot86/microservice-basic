@@ -1,8 +1,3 @@
-/*
- * VTB Group. Do not reproduce without permission in writing.
- * Copyright (c) 2019 VTB Group. All rights reserved.
- */
-
 package org.example.basic;
 
 import org.example.basic.config.PostgresInitializerForTests;

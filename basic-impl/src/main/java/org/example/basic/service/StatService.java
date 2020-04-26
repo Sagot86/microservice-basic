@@ -6,7 +6,7 @@ import org.example.basic.dto.UserDtoFull;
 import org.example.basic.mapper.ActivityMapper;
 import org.example.basic.mapper.UserMapper;
 import org.example.basic.model.User;
-import org.example.basic.repository.UserActivityRepository;
+import org.example.basic.repository.ActivityRepository;
 import org.example.basic.repository.UserRepository;
 
 import com.google.common.annotations.VisibleForTesting;
@@ -31,7 +31,7 @@ import java.util.UUID;
 public class StatService {
 
     private final UserRepository userRepository;
-    private final UserActivityRepository activityRepository;
+    private final ActivityRepository activityRepository;
     private final UserMapper userMapper;
     private final ActivityMapper activityMapper;
 
@@ -45,7 +45,7 @@ public class StatService {
     }
 
     public List<UserActivityDto> getUserActivitiesInPeriod(UUID userId, Date start, Date end) {
-        return activityMapper.mapToActivityDto(activityRepository.findAllByUserIdAndActivityDateBetween(userId, start, end));
+        return activityMapper.mapToActivityDto(activityRepository.findAllByUidAndActivityDateBetween(userId, start, end));
     }
 
     @VisibleForTesting
