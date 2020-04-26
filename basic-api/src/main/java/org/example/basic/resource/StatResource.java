@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,8 +46,8 @@ public interface StatResource {
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success")
     })
-    List<CountryStatDto> countNewUsersInPeriod(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date start,
-                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date end);
+    List<CountryStatDto> countNewUsersInPeriod(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end);
 
     /**
      * Get user activities in set period.
@@ -61,7 +61,7 @@ public interface StatResource {
             @ApiResponse(code = 200, message = "Success")
     })
     List<UserActivityDto> getActivities(@RequestParam UUID uid,
-                                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date start,
-                                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date end);
+                                        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end);
 
 }

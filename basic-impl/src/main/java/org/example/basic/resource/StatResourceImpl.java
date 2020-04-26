@@ -7,10 +7,10 @@ import org.example.basic.service.StatService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,7 +19,7 @@ import java.util.UUID;
  *
  * @author Igor_Orlov
  */
-@Component
+@RestController
 @RequiredArgsConstructor
 public class StatResourceImpl implements StatResource {
 
@@ -32,15 +32,15 @@ public class StatResourceImpl implements StatResource {
     }
 
     @Override
-    public List<CountryStatDto> countNewUsersInPeriod(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date start,
-                                                      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date end) {
+    public List<CountryStatDto> countNewUsersInPeriod(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return statService.countNewUsersInPeriod(start, end);
     }
 
     @Override
     public List<UserActivityDto> getActivities(@RequestParam UUID uid,
-                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date start,
-                                               @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date end) {
+                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         return statService.getUserActivitiesInPeriod(uid, start, end);
     }
 }

@@ -23,7 +23,7 @@
             <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="user_activity_pk"/>
             </column>
-            <column name="user_id" type="VARCHAR(50)">
+            <column name="uid" type="uuid">
                 <constraints nullable="false"/>
             </column>
             <column name="activity_date" type="TIMESTAMP(6) WITHOUT TIME ZONE">
@@ -41,10 +41,28 @@
     <changeSet author="Igor Orlov" id="user_activity_table_init_3">
         <preConditions onFail="MARK_RAN">
             <not>
-                <indexExists indexName="${prefix}_user_activity_uid_date_unique" tableName="${prefix}_user_activity"/>
+                <foreignKeyConstraintExists foreignKeyName="uid_fk_constraint"
+                                            foreignKeyTableName="${prefix}_user_activity"/>
             </not>
         </preConditions>
-        <addUniqueConstraint columnNames="user_id,activity_date" constraintName="${prefix}_user_activity_uid_date_unique" tableName="${prefix}_user_activity"/>
+        <addForeignKeyConstraint baseColumnNames="uid"
+                                 baseTableName="${prefix}_user_activity"
+                                 constraintName="uid_fk_constraint"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="uid"
+                                 referencedTableName="${prefix}_user_info"/>
+    </changeSet>
+
+    <changeSet author="Igor Orlov" id="user_activity_table_init_4">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists indexName="${prefix}_uid_user_activity_date_unique" tableName="${prefix}_user_activity"/>
+            </not>
+        </preConditions>
+        <addUniqueConstraint columnNames="uid,activity_date" constraintName="${prefix}_uid_user_activity_date_unique" tableName="${prefix}_user_activity"/>
     </changeSet>
 
 </databaseChangeLog>
