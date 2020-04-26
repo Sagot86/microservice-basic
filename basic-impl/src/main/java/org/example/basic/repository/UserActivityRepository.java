@@ -1,4 +1,4 @@
-package org.example.basic.repo;
+package org.example.basic.repository;
 
 import org.example.basic.model.UserActivity;
 

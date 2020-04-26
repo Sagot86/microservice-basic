@@ -4,14 +4,13 @@ import org.example.basic.dto.UserDto;
 import org.example.basic.dto.UserDtoFull;
 import org.example.basic.mapper.UserMapper;
 import org.example.basic.model.UserActivity;
-import org.example.basic.repo.UserActivityRepository;
-import org.example.basic.repo.UserRepository;
+import org.example.basic.repository.UserActivityRepository;
+import org.example.basic.repository.UserRepository;
 
+import com.google.common.annotations.VisibleForTesting;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -39,10 +38,10 @@ public class UserService {
         activityRepository.save(constructActivity(uid, activity));
     }
 
-    private UserActivity constructActivity(UUID uid, Long activity) {
+    @VisibleForTesting
+    UserActivity constructActivity(UUID uid, Long activity) {
         return new UserActivity()
                 .setActivity(activity)
-                .setUserId(uid)
-                .setActivityDate(Date.from(Instant.now()));
+                .setUserId(uid);
     }
 }

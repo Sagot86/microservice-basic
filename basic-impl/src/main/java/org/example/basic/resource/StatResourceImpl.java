@@ -28,7 +28,7 @@ public class StatResourceImpl implements StatResource {
     @Override
     public List<UserDtoFull> getTopUsersByCountry(@RequestParam Integer usersCount,
                                                   @RequestParam String country) {
-        return statService.getUsersByCountry(usersCount, country);
+        return statService.getTopRichInCountry(usersCount, country);
     }
 
     @Override

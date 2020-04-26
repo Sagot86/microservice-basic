@@ -1,4 +1,4 @@
-package org.example.basic.repo;
+package org.example.basic.repository;
 
 import org.example.basic.dto.CountryStatDto;
 import org.example.basic.model.User;
@@ -27,7 +27,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
     @Query("SELECT new org.example.basic.dto.CountryStatDto(u.country, COUNT(u.uid)) "
             + "FROM User AS u WHERE u.creationDate BETWEEN :startDate AND :endDate GROUP BY u.country ORDER BY u.country ASC")
-    List<CountryStatDto> countNewUsersByCounty(
+    List<CountryStatDto> countNewUsersForEachCounty(
             @Param("startDate") Date start,
             @Param("endDate") Date end);
 

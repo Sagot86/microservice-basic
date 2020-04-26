@@ -2,6 +2,7 @@ package org.example.basic.model;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +37,8 @@ public class UserActivity {
 
     private Long activity;
 
+    @CreationTimestamp
+    @Column(updatable = false)
     private Date activityDate;
 
 }

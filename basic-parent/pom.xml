@@ -48,6 +48,7 @@
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <checkstyle.version>8.15</checkstyle.version>
         <testcontainers.version>1.13.0</testcontainers.version>
+        <guava.version>23.0</guava.version>
 
         <!-- liquibase -->
         <liquibase-hibernate.version>3.6</liquibase-hibernate.version>
@@ -182,6 +183,11 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

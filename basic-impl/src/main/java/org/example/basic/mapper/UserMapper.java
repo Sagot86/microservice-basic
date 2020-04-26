@@ -33,7 +33,8 @@ public class UserMapper {
                 .setUid(user.getUid())
                 .setCountry(user.getCountry())
                 .setMoney(user.getMoney())
-                .setActivities(activityMapper.mapToActivityDto(user.getUserActivityList()));
+                .setCreationDate(user.getCreationDate())
+                .setActivities(activityMapper.mapToActivityDto(user.getActivities()));
     }
 
     public List<UserDtoFull> mapToFullUserDto(List<User> users) {
