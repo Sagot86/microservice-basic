@@ -6,6 +6,7 @@ import org.example.basic.dto.UserDtoFull;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,18 @@ import java.util.UUID;
  */
 @RequestMapping("/user")
 public interface UserDataResource {
+
+    /**
+     * Create new user.
+     *
+     * @param country user's country.
+     * @return user's UUID
+     */
+    @PostMapping("/create")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Success")
+    })
+    UUID createNewUser(String country);
 
     /**
      * Update existing user information.
@@ -50,11 +63,11 @@ public interface UserDataResource {
      * @param uid      user if
      * @param activity activity value
      */
-    @PutMapping("/activity")
+    @PostMapping("/activity")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success")
     })
-    void updateActivity(@RequestParam UUID uid,
+    void createActivity(@RequestParam UUID uid,
                         @RequestParam Long activity);
 
 

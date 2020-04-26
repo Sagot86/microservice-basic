@@ -4,8 +4,8 @@ import org.example.basic.dto.CountryStatDto;
 import org.example.basic.model.User;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -19,9 +19,7 @@ import java.util.UUID;
  * @author Igor_Orlov
  */
 @Repository
-public interface UserRepository extends PagingAndSortingRepository<User, Long> {
-
-    User findUserByUid(UUID uid);
+public interface UserRepository extends JpaRepository<User, UUID> {
 
     List<User> findAllByCountry(String country, Pageable pageable);
 

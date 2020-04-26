@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: default
+    active: local
   datasource:
     driverClassName: org.postgresql.Driver
     url: ${DATASOURCE_URL:jdbc:postgresql://postgresql:5432/tdb}?currentSchema=basic

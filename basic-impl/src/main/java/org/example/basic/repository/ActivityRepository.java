@@ -2,7 +2,7 @@ package org.example.basic.repository;
 
 import org.example.basic.model.UserActivity;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -15,8 +15,8 @@ import java.util.UUID;
  * @author Igor_Orlov
  */
 @Repository
-public interface UserActivityRepository extends PagingAndSortingRepository<UserActivity, Long> {
+public interface ActivityRepository extends JpaRepository<UserActivity, Long> {
 
-    List<UserActivity> findAllByUserIdAndActivityDateBetween(UUID userId, Date start, Date end);
+    List<UserActivity> findAllByUidAndActivityDateBetween(UUID uid, Date start, Date end);
 
 }

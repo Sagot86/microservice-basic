@@ -16,7 +16,7 @@ import java.util.UUID;
 @Accessors(chain = true)
 public class UserDtoFull {
 
-    private UUID uid;
+    private UUID id;
     private String country;
     private Long money;
     private Date creationDate;
