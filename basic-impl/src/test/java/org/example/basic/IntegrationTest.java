@@ -1,8 +1,3 @@
-/*
- * VTB Group. Do not reproduce without permission in writing.
- * Copyright (c) 2019 VTB Group. All rights reserved.
- */
-
 package org.example.basic;
 
 import org.example.basic.config.PostgresInitializerForTests;
@@ -13,8 +8,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -27,7 +23,7 @@ import java.lang.annotation.Target;
  * @author Igor_Orlov
  */
 @Inherited
-@Transactional
+@Transactional(isolation = Isolation.READ_COMMITTED)
 @SpringBootTest
 @AutoConfigureMockMvc
 @Target({ElementType.TYPE})

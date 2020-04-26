@@ -3,7 +3,7 @@ package org.example.basic.dto;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,10 +16,10 @@ import java.util.UUID;
 @Accessors(chain = true)
 public class UserDtoFull {
 
-    private UUID uid;
+    private UUID uuid;
     private String country;
     private Long money;
-    private Date creationDate;
+    private LocalDateTime creationDate;
     private List<UserActivityDto> activities;
 
 }

@@ -3,7 +3,7 @@ package org.example.basic.dto;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -17,6 +17,6 @@ public class UserActivityDto {
 
     private UUID uid;
     private Long activity;
-    private Date activityDate;
+    private LocalDateTime activityDate;
 
 }

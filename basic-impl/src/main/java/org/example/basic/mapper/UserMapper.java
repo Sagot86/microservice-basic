@@ -23,14 +23,14 @@ public class UserMapper {
 
     public User mapToUser(UserDto dto) {
         return new User()
-                .setUid(dto.getUid())
+                .setUid(dto.getUuid())
                 .setCountry(dto.getCountry())
                 .setMoney(dto.getMoney());
     }
 
     public UserDtoFull mapToFullUserDto(User user) {
         return new UserDtoFull()
-                .setUid(user.getUid())
+                .setUuid(user.getUid())
                 .setCountry(user.getCountry())
                 .setMoney(user.getMoney())
                 .setCreationDate(user.getCreationDate())
@@ -42,5 +42,4 @@ public class UserMapper {
                 .map(this::mapToFullUserDto)
                 .collect(Collectors.toList());
     }
-
 }

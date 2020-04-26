@@ -1,6 +1,7 @@
 package org.example.basic.service;
 
 import static org.example.basic.util.Constants.COUNTRY;
+import static org.example.basic.util.Constants.NOW;
 import static org.example.basic.util.Constants.USER_ID;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.verify;
@@ -13,7 +14,7 @@ import org.example.basic.dto.UserDtoFull;
 import org.example.basic.mapper.ActivityMapper;
 import org.example.basic.mapper.UserMapper;
 import org.example.basic.model.User;
-import org.example.basic.repository.UserActivityRepository;
+import org.example.basic.repository.ActivityRepository;
 import org.example.basic.repository.UserRepository;
 
 import org.junit.Test;
@@ -25,9 +26,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,7 +41,7 @@ public class StatServiceTest {
     @Mock
     private UserRepository userRepository;
     @Mock
-    private UserActivityRepository activityRepository;
+    private ActivityRepository activityRepository;
     @Mock
     private UserMapper userMapper;
     @Mock
@@ -81,8 +81,8 @@ public class StatServiceTest {
     @Test
     public void testCountNewUsers() {
         List<CountryStatDto> countryStatDtos = Collections.emptyList();
-        Date start = Date.from(Instant.now());
-        Date end = Date.from(Instant.now());
+        LocalDateTime start = NOW;
+        LocalDateTime end = NOW;
 
         when(userRepository.countNewUsersForEachCounty(start, end)).thenReturn(countryStatDtos);
 
@@ -95,13 +95,13 @@ public class StatServiceTest {
 
     @Test
     public void testGetUsersActivities() {
-        Date start = Date.from(Instant.now());
-        Date end = Date.from(Instant.now());
+        LocalDateTime start = NOW;
+        LocalDateTime end = NOW;
 
         List<UserActivityDto> result = statService.getUserActivitiesInPeriod(USER_ID, start, end);
 
         assertNotNull(result);
-        verify(activityRepository).findAllByUserIdAndActivityDateBetween(USER_ID, start, end);
+        verify(activityRepository).findAllByUidAndActivityDateBetween(USER_ID, start, end);
         verify(activityMapper).mapToActivityDto(Collections.emptyList());
         verifyNoMoreInteractions(activityRepository);
         verifyNoMoreInteractions(activityMapper);

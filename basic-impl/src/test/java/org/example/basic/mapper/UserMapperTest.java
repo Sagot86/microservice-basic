@@ -1,8 +1,8 @@
 package org.example.basic.mapper;
 
 import static org.example.basic.util.Constants.COUNTRY;
-import static org.example.basic.util.Constants.CREATION_DATE;
 import static org.example.basic.util.Constants.MONEY;
+import static org.example.basic.util.Constants.NOW;
 import static org.example.basic.util.Constants.USER_ID;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
@@ -44,7 +44,7 @@ public class UserMapperTest {
     @Test
     public void testMapToEntity() {
         UserDto userDto = new UserDto()
-                .setUid(USER_ID)
+                .setUuid(USER_ID)
                 .setMoney(MONEY)
                 .setCountry(COUNTRY);
 
@@ -52,7 +52,7 @@ public class UserMapperTest {
 
         assertEquals(userDto.getCountry(), result.getCountry());
         assertEquals(userDto.getMoney(), result.getMoney());
-        assertEquals(userDto.getUid(), result.getUid());
+        assertEquals(userDto.getUuid(), result.getUid());
     }
 
     @Test
@@ -64,7 +64,7 @@ public class UserMapperTest {
                 .setMoney(MONEY)
                 .setCountry(COUNTRY)
                 .setActivities(activities)
-                .setCreationDate(CREATION_DATE);
+                .setCreationDate(NOW);
 
         when(activityMapper.mapToActivityDto(activities)).thenReturn(activityDtos);
 
@@ -72,7 +72,7 @@ public class UserMapperTest {
 
         assertEquals(user.getCountry(), result.getCountry());
         assertEquals(user.getMoney(), result.getMoney());
-        assertEquals(user.getUid(), result.getUid());
+        assertEquals(user.getUid(), result.getUuid());
         assertEquals(user.getCreationDate(), result.getCreationDate());
         assertEquals(activityDtos, result.getActivities());
         verify(activityMapper).mapToActivityDto(activities);
@@ -88,7 +88,7 @@ public class UserMapperTest {
                 .setMoney(MONEY)
                 .setCountry(COUNTRY)
                 .setActivities(activities)
-                .setCreationDate(CREATION_DATE);
+                .setCreationDate(NOW);
         List<User> users = new ArrayList<>(Arrays.asList(user, user, user));
 
         when(activityMapper.mapToActivityDto(activities)).thenReturn(activityDtos);
@@ -98,7 +98,7 @@ public class UserMapperTest {
         for (UserDtoFull dto : result) {
             assertEquals(user.getCountry(), dto.getCountry());
             assertEquals(user.getMoney(), dto.getMoney());
-            assertEquals(user.getUid(), dto.getUid());
+            assertEquals(user.getUid(), dto.getUuid());
             assertEquals(user.getCreationDate(), dto.getCreationDate());
             assertEquals(activityDtos, dto.getActivities());
         }
