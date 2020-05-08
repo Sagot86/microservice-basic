@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: create-drop
+  liquibase:
+    enabled: true
+    default-schema: basic

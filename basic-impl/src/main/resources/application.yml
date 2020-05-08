@@ -8,13 +8,19 @@ spring:
     password: ${DATASOURCE_PASSWORD:basic_ms}
   main:
     allow-bean-definition-overriding: true
+  jpa:
+    properties:
+      hibernate:
+        naming:
+          physical-strategy: org.example.basic.config.HibernateNamingStrategy
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: validate
   liquibase:
     enabled: false
     change-log: classpath:db/changelog/database_changelog.xml
     user: ${LIQUIBASE_USER:basic}
     password: ${LIQUIBASE_PASSWORD:basic}
     url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/tdb}?currentSchema=basic
-
 logging:
   level:
     ROOT: INFO

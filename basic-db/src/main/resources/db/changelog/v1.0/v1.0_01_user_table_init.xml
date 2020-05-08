@@ -1,0 +1,41 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   logicalFilePath="src/main/resources/db/changelog/database_changelog.xml">
+
+    <changeSet author="Igor Orlov" id="user_info_table_init_1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="${prefix}_user_info"/>
+            </not>
+        </preConditions>
+        <createTable tableName="${prefix}_user_info">
+            <column name="uid" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_info_pk"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP(6) WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="money" type="BIGINT"/>
+            <column name="country" type="VARCHAR(30)"/>
+        </createTable>
+        <comment>
+            Таблица для хранения сущностей пользователей
+        </comment>
+    </changeSet>
+
+    <changeSet author="Igor Orlov" id="user_info_table_init_2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="${prefix}_user_info" indexName="${prefix}_user_info_id_idx"/>
+            </not>
+        </preConditions>
+        <createIndex tableName="${prefix}_user_info" indexName="${prefix}_user_info_id_idx">
+            <column name="uid"/>
+        </createIndex>
+        <comment>
+            Добавление индекса на uid
+        </comment>
+    </changeSet>
+
+</databaseChangeLog>
