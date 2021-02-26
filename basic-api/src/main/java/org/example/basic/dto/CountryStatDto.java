@@ -1,7 +1,8 @@
 package org.example.basic.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * CountryStatDto.
@@ -9,10 +10,11 @@ import lombok.RequiredArgsConstructor;
  * @author Igor_Orlov
  */
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class CountryStatDto {
 
-    private final String country;
-    private final Long userCount;
+    private String country;
+    private Long userCount;
 
 }
