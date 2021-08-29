@@ -1,6 +1,8 @@
 package org.example.basic.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldNameConstants;
 
@@ -21,7 +23,9 @@ import java.util.UUID;
  * @author Igor_Orlov
  */
 @Entity
-@Data
+@NoArgsConstructor
+@Getter
+@Setter
 @FieldNameConstants
 @Accessors(chain = true)
 @Table(name = "basic_user_activity")

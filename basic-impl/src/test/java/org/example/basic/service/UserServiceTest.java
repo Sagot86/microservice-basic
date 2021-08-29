@@ -20,6 +20,8 @@ import org.example.basic.repository.UserRepository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -40,6 +42,8 @@ public class UserServiceTest {
     private ActivityRepository activityRepository;
     @Mock
     private UserMapper mapper;
+    @Captor
+    private ArgumentCaptor<UserActivity> activityArgumentCaptor;
 
     @InjectMocks
     private UserService userService;
@@ -97,12 +101,15 @@ public class UserServiceTest {
 
     @Test
     public void testActivityUpdating() {
-        UserActivity activity = userService.constructActivity(USER_ID, ACTIVITY);
-
         userService.createUsersActivity(USER_ID, ACTIVITY);
 
-        verify(activityRepository).save(activity);
+        verify(activityRepository).save(activityArgumentCaptor.capture());
         verifyNoMoreInteractions(activityRepository);
+
+        UserActivity captured = activityArgumentCaptor.getValue();
+
+        assertEquals(USER_ID, captured.getUid());
+        assertEquals(ACTIVITY, captured.getActivity());
     }
 
     @Test
