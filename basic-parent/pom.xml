@@ -43,7 +43,7 @@
         <!-- lib-versions -->
         <lombok.version>1.18.16</lombok.version>
         <postgresql.version>42.2.12</postgresql.version>
-        <liquibase.version>3.8.5</liquibase.version>
+        <liquibase.version>4.8.0</liquibase.version>
         <mockito-core.version>2.10.0</mockito-core.version>
         <cucumber.version>5.4.1</cucumber.version>
         <testcontainers.version>1.14.3</testcontainers.version>
