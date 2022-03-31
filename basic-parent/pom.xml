@@ -36,7 +36,7 @@
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
 
         <!-- spring-versions -->
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <spring-cloud.feign.version>1.4.7.RELEASE</spring-cloud.feign.version>
 
